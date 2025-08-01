@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Servicios de Construcción</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+  <nav>
+    <button onclick="mostrarSeccion('presentacion')">Presentación</button>
+    <button onclick="mostrarSeccion('electricidad')">Electricidad</button>
+    <button onclick="mostrarSeccion('plomeria')">Plomería</button>
+    <button onclick="mostrarSeccion('remodelacion')">Remodelación</button>
+    <button onclick="mostrarSeccion('obras')">Obra Civil</button>
+    <button onclick="mostrarSeccion('generales')">Servicios Generales</button>
+    <button onclick="mostrarSeccion('resumen')">Resumen</button>
+  </nav>
+
+  <section id="presentacion" class="active">
+    <h2>Bienvenido</h2>
+    <p>Ofrecemos servicios integrales en electricidad, plomería, remodelación, obra civil y más. Selecciona una categoría para comenzar.</p>
+  </section>
+
+  <!-- Reutilizamos esta función para cargar múltiples servicios -->
+  <script>
+    const servicios = {
+      electricidad: [      
+  {  nombre: "Instalación de tomacorriente", precio: 35000 },
+  {  nombre: "Instalación de interruptor sencillo", precio: 25000 },
+  {  nombre: "Instalación de interruptor doble", precio: 30000 },
+  {  nombre: "Cambio de breaker", precio: 40000 },
+  {  nombre: "Instalación de lámpara de techo", precio: 45000 },
+  {  nombre: "Cambio de toma doble", precio: 28000 },
+  {  nombre: "Revisión general de instalación eléctrica", precio: 60000 },
+  {  nombre: "Instalación de ventilador de techo", precio: 85000 },
+  {  nombre: "Cambio de caja de breaker", precio: 150000 },
+  {  nombre: "Reparación de corto circuito", precio: 50000 },
+  {  nombre: "Instalación de timbre", precio: 20000 },
+  {  nombre: "Instalación de sensor de movimiento", precio: 55000 },
+  {  nombre: "Reparación de punto de luz", precio: 30000 },
+  {  nombre: "Instalación de luz LED empotrada", precio: 40000 },
+  {  nombre: "Cambio de cableado (metro lineal)", precio: 8000 },
+  {  nombre: "Instalación de toma 220v", precio: 75000 },
+  {  nombre: "Chequeo de continuidad y voltaje", precio: 30000 },
+  {  nombre: "Cableado de acometida", precio: 160000 },
+  {  nombre: "Instalación de luminaria exterior", precio: 50000 },
+  {  nombre: "Instalación de lámpara colgante", precio: 60000 },
+  {  nombre: "Cambio de enchufe", precio: 15000 },
+  {  nombre: "Instalación de UPS para oficina", precio: 120000 },
+  {  nombre: "Instalación de plafón LED", precio: 40000 },
+  {  nombre: "Ampliación de tomas eléctricas", precio: 90000 },
+  {  nombre: "Instalación de caja de paso", precio: 25000 },
+  {  nombre: "Revisión de tablero general", precio: 45000 },
+  {  nombre: "Reinstalación de red eléctrica completa", precio: 500000 },
+  {  nombre: "Instalación de temporizador de luz", precio: 38000 },
+  {  nombre: "Reparación de lámpara fluorescente", precio: 30000 },
+  {  nombre: "Cambio de interruptor térmico", precio: 40000 },
+  {  nombre: "Montaje de sistema de iluminación decorativa", precio: 70000 },
+  {  nombre: "Instalación de sistema de domótica", precio: 250000 },
+  {  nombre: "Instalación de luz para espejo", precio: 28000 },
+  {  nombre: "Instalación de transformador de voltaje", precio: 90000 },
+  {  nombre: "Instalación de extractor de baño", precio: 60000 },
+  {  nombre: "Cambio de balastro", precio: 35000 },
+  {  nombre: "Reubicación de tomacorrientes", precio: 60000 },
+  {  nombre: "Revisión de carga eléctrica", precio: 40000 },
+  {  nombre: "Mantenimiento de lámparas de emergencia", precio: 35000 },
+  {  nombre: "Cambio de cable a tierra", precio: 30000 },
+  {  nombre: "Instalación de lámpara colgante doble", precio: 75000 },
+  {  nombre: "Instalación de caja de distribución", precio: 50000 },
+  {  nombre: "Reparación de timbre", precio: 20000 },
+  {  nombre: "Instalación de enchufe con USB", precio: 45000 },
+  {  nombre: "Montaje de luces navideñas exteriores", precio: 65000 },
+  {  nombre: "Instalación de protector de voltaje", precio: 48000 },
+  {  nombre: "Mantenimiento eléctrico residencial", precio: 100000 },
+  {  nombre: "Configuración de sistema de luces inteligentes", precio: 95000 },
+  {  nombre: "Diagnóstico de consumo excesivo", precio: 55000 },
+  {  nombre: "Instalación de interruptor con dimmer", precio: 42000 }
+
+
+      ],
+      plomeria: [
+  { nombre: "Reparación de fuga", precio: 25000 },
+  { nombre: "Instalación de lavamanos", precio: 35000 },      
+  { "nombre": "Instalación de lavamanos", "precio": 85000 },
+  { "nombre": "Instalación de inodoro", "precio": 95000 },
+  { "nombre": "Cambio de grifería", "precio": 45000 },
+  { "nombre": "Detección de fugas de agua", "precio": 60000 },
+  { "nombre": "Reparación de fuga en tubería", "precio": 70000 },
+  { "nombre": "Instalación de calentador a gas", "precio": 120000 },
+  { "nombre": "Instalación de calentador eléctrico", "precio": 110000 },
+  { "nombre": "Limpieza de sifones", "precio": 40000 },
+  { "nombre": "Destape de tuberías", "precio": 75000 },
+  { "nombre": "Instalación de ducha eléctrica", "precio": 60000 },
+  { "nombre": "Reparación de ducha", "precio": 35000 },
+  { "nombre": "Mantenimiento de tanque elevado", "precio": 95000 },
+  { "nombre": "Instalación de bomba de agua", "precio": 130000 },
+  { "nombre": "Cambio de válvula de paso", "precio": 40000 },
+  { "nombre": "Instalación de lavaplatos", "precio": 90000 },
+  { "nombre": "Reparación de lavaplatos", "precio": 60000 },
+  { "nombre": "Reparación de bajante", "precio": 70000 },
+  { "nombre": "Cambio de flotador", "precio": 30000 },
+  { "nombre": "Instalación de lavadora", "precio": 85000 },
+  { "nombre": "Instalación de secadora", "precio": 95000 },
+  { "nombre": "Cambio de sifón de lavamanos", "precio": 45000 },
+  { "nombre": "Cambio de sifón de lavaplatos", "precio": 45000 },
+  { "nombre": "Cambio de ducha", "precio": 50000 },
+  { "nombre": "Revisión general de plomería", "precio": 65000 },
+  { "nombre": "Mantenimiento de red hidráulica", "precio": 100000 },
+  { "nombre": "Prueba de presión hidráulica", "precio": 70000 },
+  { "nombre": "Cambio de tubo de cobre", "precio": 90000 },
+  { "nombre": "Cambio de tubo PVC", "precio": 80000 },
+  { "nombre": "Instalación de desagüe de lavadora", "precio": 60000 },
+  { "nombre": "Desmonte de muebles sanitarios", "precio": 40000 },
+  { "nombre": "Instalación de mueble de baño", "precio": 95000 },
+  { "nombre": "Impermeabilización de caja de inspección", "precio": 85000 },
+  { "nombre": "Limpieza de caja de inspección", "precio": 50000 },
+  { "nombre": "Instalación de sistema de riego", "precio": 150000 },
+  { "nombre": "Reparación de sistema de riego", "precio": 100000 },
+  { "nombre": "Instalación de fregadero doble", "precio": 100000 },
+  { "nombre": "Cambio de codo hidráulico", "precio": 35000 },
+  { "nombre": "Instalación de llaves de jardín", "precio": 40000 },
+  { "nombre": "Cambio de flexómetro de agua", "precio": 45000 },
+  { "nombre": "Revisión y ajuste de presión de agua", "precio": 50000 },
+  { "nombre": "Reparación de tanque de almacenamiento", "precio": 110000 },
+  { "nombre": "Instalación de tanque de almacenamiento", "precio": 160000 },
+  { "nombre": "Limpieza de tanque de almacenamiento", "precio": 80000 },
+  { "nombre": "Revisión de columna de ventilación", "precio": 55000 },
+  { "nombre": "Cambio de accesorios de baño", "precio": 30000 },
+  { "nombre": "Reubicación de lavamanos", "precio": 90000 },
+  { "nombre": "Reubicación de lavaplatos", "precio": 100000 },
+  { "nombre": "Reubicación de inodoro", "precio": 100000 },
+  { "nombre": "Cambio de válvula de descarga", "precio": 35000 }
+
+
+      ],
+      remodelacion: [     
+  { "nombre": "Remodelación de cocina básica", "precio": 1800000 },
+  { "nombre": "Remodelación de baño completo", "precio": 1400000 },
+  { "nombre": "Cambio de enchape de cocina", "precio": 950000 },
+  { "nombre": "Cambio de enchape en baño", "precio": 870000 },
+  { "nombre": "Cambio de mesón de cocina", "precio": 620000 },
+  { "nombre": "Cambio de sanitario", "precio": 250000 },
+  { "nombre": "Instalación de puerta corrediza", "precio": 380000 },
+  { "nombre": "Ampliación de habitación", "precio": 2800000 },
+  { "nombre": "Construcción de clóset empotrado", "precio": 720000 },
+  { "nombre": "Remodelación de sala-comedor", "precio": 2100000 },
+  { "nombre": "Pintura general de apartamento", "precio": 750000 },
+  { "nombre": "Instalación de cielo raso en drywall", "precio": 680000 },
+  { "nombre": "Construcción de bar en sala", "precio": 1100000 },
+  { "nombre": "Revestimiento de paredes en piedra decorativa", "precio": 890000 },
+  { "nombre": "Remodelación de fachada externa", "precio": 1950000 },
+  { "nombre": "Cambio de pisos en sala y habitaciones", "precio": 1600000 },
+  { "nombre": "División de espacios con drywall", "precio": 930000 },
+  { "nombre": "Instalación de ventanales nuevos", "precio": 1250000 },
+  { "nombre": "Remodelación de balcón", "precio": 880000 },
+  { "nombre": "Instalación de iluminación empotrada", "precio": 570000 },
+  { "nombre": "Cambio de puertas interiores", "precio": 410000 },
+  { "nombre": "Remodelación de escaleras", "precio": 1350000 },
+  { "nombre": "Impermeabilización de terrazas", "precio": 970000 },
+  { "nombre": "Ampliación de baño", "precio": 1450000 },
+  { "nombre": "Cambio de grifería en cocina y baño", "precio": 320000 },
+  { "nombre": "Reparación de humedades", "precio": 590000 },
+  { "nombre": "Decoración con papel tapiz", "precio": 460000 },
+  { "nombre": "Remodelación de cuarto de estudio", "precio": 740000 },
+  { "nombre": "Remodelación de patio interior", "precio": 1150000 },
+  { "nombre": "Instalación de pérgola en terraza", "precio": 1750000 },
+  { "nombre": "Cambio de ventanas", "precio": 870000 },
+  { "nombre": "Pintura de rejas y portones", "precio": 310000 },
+  { "nombre": "Instalación de pisos laminados", "precio": 950000 },
+  { "nombre": "Decoración de techos con luces led", "precio": 680000 },
+  { "nombre": "Remodelación de zona de lavandería", "precio": 830000 },
+  { "nombre": "Reemplazo de lavamanos y mueble", "precio": 470000 },
+  { "nombre": "Rediseño de fachada con cerámica", "precio": 1550000 },
+  { "nombre": "Cambio de tejas y canaletas", "precio": 770000 },
+  { "nombre": "Remodelación de hall de entrada", "precio": 920000 },
+  { "nombre": "Instalación de mampara en baño", "precio": 480000 },
+  { "nombre": "Decoración con molduras de yeso", "precio": 450000 },
+  { "nombre": "Instalación de chimenea decorativa", "precio": 980000 },
+  { "nombre": "Reparación de paredes agrietadas", "precio": 520000 },
+  { "nombre": "Reubicación de enchufes y tomas", "precio": 390000 },
+  { "nombre": "Piso antideslizante en zonas húmedas", "precio": 650000 },
+  { "nombre": "Mejoras en acústica de habitación", "precio": 890000 },
+  { "nombre": "Diseño y construcción de biblioteca empotrada", "precio": 1080000 },
+  { "nombre": "Remodelación de oficina en casa", "precio": 980000 },
+  { "nombre": "Diseño e instalación de cocina integral", "precio": 2800000 }
+
+
+      ],
+      obras: [
+  { "nombre": "Construcción de muro en ladrillo", "precio": 180000 },
+  { "nombre": "Fundición de zapatas", "precio": 250000 },
+  { "nombre": "Cimentación en concreto", "precio": 290000 },
+  { "nombre": "Placa de entrepiso tradicional", "precio": 360000 },
+  { "nombre": "Placa aligerada (con viguetas y bovedillas)", "precio": 330000 },
+  { "nombre": "Revoque de muro interior", "precio": 120000 },
+  { "nombre": "Revoque de muro exterior", "precio": 135000 },
+  { "nombre": "Levantamiento de columnas", "precio": 270000 },
+  { "nombre": "Corte y nivelación de terreno", "precio": 180000 },
+  { "nombre": "Relleno compactado", "precio": 95000 },
+  { "nombre": "Instalación de cerámica piso", "precio": 95000 },
+  { "nombre": "Instalación de enchape en muro", "precio": 115000 },
+  { "nombre": "Estuco y pintura interior", "precio": 70000 },
+  { "nombre": "Instalación de cubierta metálica", "precio": 220000 },
+  { "nombre": "Construcción de estructura metálica", "precio": 260000 },
+  { "nombre": "Demolición de muro", "precio": 85000 },
+  { "nombre": "Instalación de cielo raso en drywall", "precio": 120000 },
+  { "nombre": "Levantamiento de muros en bloque", "precio": 160000 },
+  { "nombre": "Impermeabilización de cubierta", "precio": 150000 },
+  { "nombre": "Pulido de concreto", "precio": 90000 },
+  { "nombre": "Instalación de ventanas en aluminio", "precio": 190000 },
+  { "nombre": "Soldadura estructural", "precio": 210000 },
+  { "nombre": "Instalación de puertas metálicas", "precio": 170000 },
+  { "nombre": "Montaje de andamios", "precio": 80000 },
+  { "nombre": "Diseño arquitectónico básico", "precio": 300000 },
+  { "nombre": "Supervisión de obra", "precio": 400000 },
+  { "nombre": "Topografía de terreno", "precio": 270000 },
+  { "nombre": "Excavación manual para zapata", "precio": 100000 },
+  { "nombre": "Instalación de canaletas", "precio": 90000 },
+  { "nombre": "Pintura exterior con esmalte", "precio": 95000 },
+  { "nombre": "Refuerzo estructural en vigas", "precio": 250000 },
+  { "nombre": "Construcción de escaleras en concreto", "precio": 280000 },
+  { "nombre": "Alistado de superficie para piso", "precio": 85000 },
+  { "nombre": "Nivelación con autonivelante", "precio": 115000 },
+  { "nombre": "Instalación de grifería industrial", "precio": 130000 },
+  { "nombre": "Colocación de adoquines", "precio": 98000 },
+  { "nombre": "Construcción de tanque de agua en concreto", "precio": 350000 },
+  { "nombre": "Muros de contención", "precio": 390000 },
+  { "nombre": "Estuco veneciano decorativo", "precio": 120000 },
+  { "nombre": "Suministro y aplicación de concreto bombeado", "precio": 310000 },
+  { "nombre": "Nivelación de losa", "precio": 95000 },
+  { "nombre": "Aislamiento térmico en techos", "precio": 145000 },
+  { "nombre": "Reparación de grietas estructurales", "precio": 160000 },
+  { "nombre": "Ampliación de vivienda", "precio": 450000 },
+  { "nombre": "Construcción de garaje", "precio": 370000 },
+  { "nombre": "Enchape en piedra decorativa", "precio": 165000 },
+  { "nombre": "Instalación de rejas de seguridad", "precio": 140000 },
+  { "nombre": "Pulida de pisos industriales", "precio": 135000 },
+  { "nombre": "Construcción de pérgola", "precio": 220000 }
+
+
+      ],
+      generales: [
+        
+  { "nombre": "Aseo general de casa", "precio": 80000 },
+  { "nombre": "Limpieza de vidrios exteriores", "precio": 60000 },
+  { "nombre": "Limpieza profunda de cocina", "precio": 90000 },
+  { "nombre": "Limpieza de alfombras", "precio": 75000 },
+  { "nombre": "Desinfección de baños", "precio": 40000 },
+  { "nombre": "Pulido de pisos", "precio": 85000 },
+  { "nombre": "Pintura interior básica", "precio": 120000 },
+  { "nombre": "Pintura de rejas o puertas metálicas", "precio": 95000 },
+  { "nombre": "Mantenimiento de jardín", "precio": 60000 },
+  { "nombre": "Corte de césped", "precio": 50000 },
+  { "nombre": "Lavado de colchones", "precio": 70000 },
+  { "nombre": "Lavado de tapicería", "precio": 65000 },
+  { "nombre": "Armado de muebles", "precio": 55000 },
+  { "nombre": "Desarme y reubicación de muebles", "precio": 50000 },
+  { "nombre": "Limpieza de tanques de agua", "precio": 130000 },
+  { "nombre": "Aplicación de cera a pisos", "precio": 60000 },
+  { "nombre": "Fumigación general", "precio": 100000 },
+  { "nombre": "Control de plagas", "precio": 95000 },
+  { "nombre": "Instalación de cortinas o persianas", "precio": 45000 },
+  { "nombre": "Instalación de cuadros y repisas", "precio": 35000 },
+  { "nombre": "Limpieza de techos o cielorrasos", "precio": 70000 },
+  { "nombre": "Limpieza de garajes", "precio": 60000 },
+  { "nombre": "Limpieza de terrazas o balcones", "precio": 55000 },
+  { "nombre": "Lavado de fachada", "precio": 95000 },
+  { "nombre": "Servicio de mudanza local", "precio": 180000 },
+  { "nombre": "Transporte de muebles", "precio": 100000 },
+  { "nombre": "Asistencia en eventos (meseros/limpieza)", "precio": 85000 },
+  { "nombre": "Aseo post-construcción", "precio": 140000 },
+  { "nombre": "Limpieza de sótanos", "precio": 70000 },
+  { "nombre": "Recolección de escombros", "precio": 120000 },
+  { "nombre": "Lavado de cortinas", "precio": 40000 },
+  { "nombre": "Limpieza de ductos de ventilación", "precio": 105000 },
+  { "nombre": "Mantenimiento de lámparas", "precio": 50000 },
+  { "nombre": "Instalación de dispensadores", "precio": 30000 },
+  { "nombre": "Limpieza de lámparas y bombillos", "precio": 35000 },
+  { "nombre": "Empaque para mudanzas", "precio": 65000 },
+  { "nombre": "Organización de espacios", "precio": 80000 },
+  { "nombre": "Limpieza de muebles exteriores", "precio": 50000 },
+  { "nombre": "Lavado de paredes", "precio": 85000 },
+  { "nombre": "Limpieza de canaletas", "precio": 75000 },
+  { "nombre": "Limpieza con hidrolavadora", "precio": 95000 },
+  { "nombre": "Desinfección de ambientes", "precio": 60000 },
+  { "nombre": "Servicio de reciclaje doméstico", "precio": 40000 },
+  { "nombre": "Lavado de tapetes grandes", "precio": 70000 },
+  { "nombre": "Mantenimiento de puertas corredizas", "precio": 50000 },
+  { "nombre": "Instalación de buzones o cerraduras", "precio": 45000 },
+  { "nombre": "Desempolve general en altura", "precio": 80000 },
+  { "nombre": "Limpieza después de eventos", "precio": 100000 },
+  { "nombre": "Revisión y limpieza de sótanos y bodegas", "precio": 70000 }
+
+
+      ],
+    };
+
+    let carrito = [];
+    let historial = [];
+
+    function mostrarSeccion(id) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      if (id === "resumen") mostrarResumen();
+    }
+
+    function crearServicios() {
+      for (const categoria in servicios) {
+        const section = document.createElement("section");
+        section.id = categoria;
+        servicios[categoria].forEach(serv => {
+          const div = document.createElement("div");
+          div.className = "servicio";
+          div.innerHTML = `
+            <span>${serv.nombre} - $${serv.precio}</span>
+            <button onclick='agregarServicio("${categoria}", "${serv.nombre}", ${serv.precio})'>Agregar</button>`;
+          section.appendChild(div);
+        });
+        document.body.appendChild(section);
+      }
+    }
+
+    function agregarServicio(categoria, nombre, precio) {
+      const existente = carrito.find(s => s.nombre === nombre);
+      if (existente) {
+        existente.cantidad += 1;
+      } else {
+        carrito.push({ categoria, nombre, precio, cantidad: 1 });
+      }
+      alert("Servicio agregado.");
+    }
+
+    function mostrarResumen() {
+      const cont = document.getElementById("resumen");
+      cont.innerHTML = `<h2>Resumen de servicios</h2>`;
+      if (carrito.length === 0) {
+        cont.innerHTML += "<p>No hay servicios seleccionados.</p>";
+        return;
+      }
+
+      carrito.forEach((serv, i) => {
+        cont.innerHTML += `
+          <div class="servicio">
+            ${serv.nombre} - $${serv.precio} x ${serv.cantidad}
+            <div>
+              <button onclick="modificarCantidad(${i}, 1)">➕</button>
+              <button onclick="modificarCantidad(${i}, -1)">➖</button>
+              <button class="btn-eliminar" onclick="eliminarServicio(${i})">X</button>
+            </div>
+          </div>`;
+      });
+
+      const total = carrito.reduce((acc, s) => acc + s.precio * s.cantidad, 0);
+      cont.innerHTML += `<p><strong>Total:</strong> $${total}</p>`;
+      cont.innerHTML += `<button class="btn btn-agendar" onclick="mostrarFormulario()">Agendar servicio</button>`;
+      cont.innerHTML += `<div class="formulario" id="formulario">
+        <h3>Agendar servicio</h3>
+        <label>Nombre</label>
+        <input type="text" id="nombre" required>
+        <label>Tipo de propiedad</label>
+        <select id="tipo" onchange="mostrarDireccion()">
+          <option value="Casa">Casa</option>
+          <option value="Apartamento">Apartamento</option>
+        </select>
+        <div id="direccionCasa">
+          <label>Dirección</label>
+          <input type="text" id="direccion">
+        </div>
+        <div id="direccionApto" style="display:none">
+          <label>Conjunto</label>
+          <input type="text" id="conjunto">
+          <label>Torre</label>
+          <input type="text" id="torre">
+          <label>Apartamento</label>
+          <input type="text" id="apto">
+        </div>
+        <label>Fecha</label>
+        <input type="date" id="fecha" onchange="validarHorario()">
+        <label>Hora</label>
+        <input type="time" id="hora">
+        <button class="btn" onclick="enviarWhatsApp()">Enviar por WhatsApp</button>
+      </div>`;
+    }
+
+    function modificarCantidad(i, delta) {
+      carrito[i].cantidad += delta;
+      if (carrito[i].cantidad <= 0) carrito.splice(i, 1);
+      mostrarResumen();
+    }
+
+    function eliminarServicio(i) {
+      carrito.splice(i, 1);
+      mostrarResumen();
+    }
+
+    function mostrarFormulario() {
+      document.getElementById("formulario").style.display = "block";
+    }
+
+    function mostrarDireccion() {
+      const tipo = document.getElementById("tipo").value;
+      document.getElementById("direccionCasa").style.display = tipo === "Casa" ? "block" : "none";
+      document.getElementById("direccionApto").style.display = tipo === "Apartamento" ? "block" : "none";
+    }
+
+    function validarHorario() {
+      const fecha = document.getElementById("fecha").value;
+      const hora = document.getElementById("hora").value;
+      const existe = historial.find(h => h.fecha === fecha && h.hora === hora);
+      if (existe) {
+        alert("Ya hay un servicio agendado en esa fecha y hora. Elige otra.");
+        document.getElementById("hora").value = "";
+      }
+    }
+
+    function enviarWhatsApp() {
+      const nombre = document.getElementById("nombre").value;
+      const tipo = document.getElementById("tipo").value;
+      const fecha = document.getElementById("fecha").value;
+      const hora = document.getElementById("hora").value;
+
+      if (!nombre || !fecha || !hora) {
+        alert("Por favor completa todos los campos.");
+        return;
+      }
+
+      let direccion = tipo === "Casa"
+        ? `Dirección: ${document.getElementById("direccion").value}`
+        : `Conjunto: ${document.getElementById("conjunto").value}, Torre: ${document.getElementById("torre").value}, Apto: ${document.getElementById("apto").value}`;
+
+      let mensaje = `Hola, soy ${nombre}, quiero agendar los siguientes servicios:\n`;
+      carrito.forEach(s => {
+        mensaje += `- ${s.nombre} x${s.cantidad} ($${s.precio * s.cantidad})\n`;
+      });
+
+      mensaje += `\n${direccion}\nFecha: ${fecha}\nHora: ${hora}`;
+      historial.push({ fecha, hora });
+
+      const url = `https://wa.me/573026645791?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+    }
+
+    window.onload = crearServicios;
+  </script>
+
+  <section id="resumen" class="resumen"></section>
+
+</body>
+</html>
